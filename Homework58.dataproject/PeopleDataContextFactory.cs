@@ -9,17 +9,31 @@ using System.Threading.Tasks;
 
 namespace Homework58.dataproject
 {
+
     public class PeopleDataContextFactory : IDesignTimeDbContextFactory<PeopleDbContext>
     {
         public PeopleDbContext CreateDbContext(string[] args)
         {
             var config = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), $"...{Path.DirectorySeparatorChar}Homework58.web"))
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true).Build();
+               .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), $"..{Path.DirectorySeparatorChar}Homework58.Web"))
+               .AddJsonFile("appsettings.json")
+               .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true).Build();
 
             return new PeopleDbContext(config.GetConnectionString("ConStr"));
         }
-
     }
+    //public class PeopleDataContextFactory : IDesignTimeDbContextFactory<PeopleDbContext>
+    //{
+
+    //    public PeopleDbContext CreateDbContext(string[] args)
+    //    {
+    //        var config = new ConfigurationBuilder()
+    //            .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), $"...{Path.DirectorySeparatorChar}Homework58.web"))
+    //            .AddJsonFile("appsettings.json")
+    //            .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true).Build();
+
+    //        return new PeopleDbContext(config.GetConnectionString("ConStr"));
+    //    }
+
+    //}
 }
